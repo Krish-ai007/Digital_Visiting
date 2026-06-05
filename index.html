@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krish Pachchigar — Digital Card</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #05050a;
+    font-family: 'DM Sans', sans-serif;
+    padding: 2rem 1rem;
+  }
+
+  .vcard {
+    width: 100%;
+    max-width: 520px;
+    background: #0a0a0f;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 0.5px solid rgba(255,255,255,0.08);
+  }
+
+  .card-glow {
+    position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .card-glow-2 {
+    position: absolute; bottom: -60px; left: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(20,184,166,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-top { padding: 2rem 2rem 1.25rem; position: relative; }
+
+  .avatar {
+    width: 52px; height: 52px; border-radius: 16px;
+    background: linear-gradient(135deg, #6366f1 0%, #14b8a6 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: #fff;
+    margin-bottom: 1.25rem; letter-spacing: -0.01em;
+  }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .badge {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 4px 12px;
+    border-radius: 100px; border: 0.5px solid;
+  }
+  .badge-indigo { background: rgba(99,102,241,0.12); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
+  .badge-teal   { background: rgba(20,184,166,0.1);  color: #5eead4; border-color: rgba(20,184,166,0.3); }
+  .badge-rose   { background: rgba(244,63,94,0.1);   color: #fda4af; border-color: rgba(244,63,94,0.25); }
+
+  .name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.1rem; font-weight: 600; color: #f8fafc;
+    margin: 0 0 0.2rem; line-height: 1.15; letter-spacing: -0.02em;
+  }
+  .title-line {
+    font-size: 13px; color: rgba(255,255,255,0.38);
+    font-weight: 400; letter-spacing: 0.04em;
+  }
+
+  .divider {
+    height: 0.5px;
+    background: linear-gradient(90deg, rgba(99,102,241,0.4) 0%, rgba(20,184,166,0.25) 60%, transparent 100%);
+    margin: 0 2rem;
+  }
+
+  .card-bottom { padding: 1.25rem 2rem 1.5rem; display: flex; flex-direction: column; }
+
+  .contact-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 0.6rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-item:hover { opacity: 0.72; }
+
+  .icon-wrap {
+    width: 34px; height: 34px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .icon-indigo { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+  .icon-teal   { background: rgba(20,184,166,0.12); color: #5eead4; }
+  .icon-rose   { background: rgba(244,63,94,0.12);  color: #fda4af; }
+
+  .contact-label {
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px;
+  }
+  .contact-value { font-size: 13.5px; color: rgba(255,255,255,0.82); font-weight: 400; }
+  .arrow-wrap { margin-left: auto; color: rgba(255,255,255,0.2); }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin: 1.2rem 0 0.75rem; padding: 0 2rem;
+  }
+
+  .social-row { display: flex; gap: 10px; padding: 0 2rem 1.5rem; }
+  .social-btn {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 12px 8px; border-radius: 14px;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+    text-decoration: none; transition: background 0.15s, border-color 0.15s;
+  }
+  .social-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
+  .social-btn span { font-size: 11px; font-weight: 500; letter-spacing: 0.03em; }
+  .social-ig span { color: #f9a8d4; }
+  .social-li span { color: #93c5fd; }
+
+  .action-row { display: flex; gap: 10px; padding: 0 2rem 2rem; }
+  .action-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 0; border-radius: 12px; border: 0.5px solid;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    text-decoration: none; transition: opacity 0.15s; font-family: 'DM Sans', sans-serif;
+    background: none;
+  }
+  .action-btn:hover { opacity: 0.8; }
+  .btn-download  { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.3); color: #a5b4fc; }
+  .btn-whatsapp  { background: rgba(37,211,102,0.10); border-color: rgba(37,211,102,0.3); color: #6ee7b7; }
+  .btn-share     { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1e1e2e; border: 0.5px solid rgba(99,102,241,0.4);
+    color: #a5b4fc; padding: 10px 20px; border-radius: 100px;
+    font-size: 13px; opacity: 0; transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none; z-index: 999; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="vcard">
+  <div class="card-glow"></div>
+  <div class="card-glow-2"></div>
+
+  <div class="card-top">
+    <div class="avatar">KP</div>
+    <div class="badge-row">
+      <span class="badge badge-indigo">Web Developer</span>
+      <span class="badge badge-teal">App Developer</span>
+      <span class="badge badge-rose">Full Stack</span>
+    </div>
+    <p class="name">Krish Pachchigar</p>
+    <p class="title-line">Building digital experiences · Full Stack Engineer</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card-bottom">
+    <a class="contact-item" href="tel:+91XXXXXXXXXX">
+      <div class="icon-wrap icon-indigo"><i class="ti ti-phone" style="font-size:16px;" aria-hidden="true"></i></div>
+      <div>
+        <p class="contact-label">Phone</p>
+        <p class="contact-value">+91 9054616807</p>
+      </div>
+      <div class="arrow-wrap"><i class="ti ti-arrow-right" style="font-size:15px;" aria-hidden="true"></i></div>
+    </a>
+
+    <a class="contact-item" href="mailto:krish@krishpachchigar.online">
+      <div class="icon-wrap icon-teal"><i class="ti ti-mail" style="font-size:16px;" aria-hidden="true"></i></div>
+      <div>
+        <p class="contact-label">Email</p>
+        <p class="contact-value">krishpachchigar9@gmail.com</p>
+      </div>
+      <div class="arrow-wrap"><i class="ti ti-arrow-right" style="font-size:15px;" aria-hidden="true"></i></div>
+    </a>
+
+    <a class="contact-item" href="https://krishpachchigar.online" target="_blank">
+      <div class="icon-wrap icon-rose"><i class="ti ti-world" style="font-size:16px;" aria-hidden="true"></i></div>
+      <div>
+        <p class="contact-label">Portfolio</p>
+        <p class="contact-value">krishpachchigar.online</p>
+      </div>
+      <div class="arrow-wrap"><i class="ti ti-external-link" style="font-size:15px;" aria-hidden="true"></i></div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Social</p>
+  <div class="social-row">
+    <a class="social-btn social-ig" href="https://www.instagram.com/iam.krish007?igsh=MTd0MnltMTZ2MDUydQ%3D%3D&utm_source=qr" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f9a8d4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="#f9a8d4" stroke="none"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+
+    <a class="social-btn social-li" href="https://www.linkedin.com/in/krish-pachchigar-269015258/" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="4"/>
+        <line x1="7" y1="10" x2="7" y2="17"/>
+        <line x1="7" y1="7" x2="7.01" y2="7" stroke-width="2.5"/>
+        <path d="M11 17v-4a2 2 0 0 1 4 0v4"/>
+        <line x1="11" y1="10" x2="11" y2="17"/>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+  </div>
+
+  <div class="divider" style="margin-bottom: 1.2rem;"></div>
+
+  <div class="action-row">
+    <button class="action-btn btn-download" onclick="downloadVCard()">
+      <i class="ti ti-download" style="font-size:16px;" aria-hidden="true"></i>
+      Save Contact
+    </button>
+    <a class="action-btn btn-whatsapp" href="https://wa.me/919054616807?text=Hi%20Krish!%20I%20found%20your%20digital%20card%20and%20wanted%20to%20connect." target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.117 1.532 5.847L.057 23.571a.75.75 0 0 0 .93.899l5.875-1.54A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0m0 21.75a9.713 9.713 0 0 1-4.952-1.352l-.355-.212-3.687.967.983-3.595-.232-.369A9.712 9.712 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75"/>
+      </svg>
+      WhatsApp
+    </a>
+    <button class="action-btn btn-share" onclick="shareCard()">
+      <i class="ti ti-share" style="font-size:16px;" aria-hidden="true"></i>
+      Share
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function downloadVCard() {
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Krish Pachchigar',
+    'N:Pachchigar;Krish;;;',
+    'TITLE:Full Stack Developer',
+    'TEL;TYPE=CELL:+91XXXXXXXXXX',
+    'EMAIL:krish@krishpachchigar.online',
+    'URL:https://krishpachchigar.online',
+    'X-SOCIALPROFILE;type=instagram:https://instagram.com/krish.pachchigar',
+    'X-SOCIALPROFILE;type=linkedin:https://linkedin.com/in/krishpachchigar',
+    'END:VCARD'
+  ].join('\r\n');
+  const blob = new Blob([vcard], { type: 'text/vcard' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Krish-Pachchigar.vcf';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Contact saved!');
+}
+
+function shareCard() {
+  const data = {
+    title: 'Krish Pachchigar — Full Stack Developer',
+    text: 'Check out Krish Pachchigar\'s digital visiting card!',
+    url: 'https://krishpachchigar.online'
+  };
+  if (navigator.share) {
+    navigator.share(data).catch(() => {});
+  } else {
+    navigator.clipboard.writeText('https://krishpachchigar.online')
+      .then(() => showToast('Link copied to clipboard!'))
+      .catch(() => showToast('Visit krishpachchigar.online'));
+  }
+}
+</script>
+</body>
+</html>
