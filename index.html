@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #05050a;
+    background: #f1f5f9; /* Light mode background */
     font-family: 'DM Sans', sans-serif;
     padding: 2rem 1rem;
   }
@@ -24,23 +24,24 @@
   .vcard {
     width: 100%;
     max-width: 520px;
-    background: #0a0a0f;
+    background: #ffffff; /* White card */
     border-radius: 24px;
     overflow: hidden;
     position: relative;
-    border: 0.5px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Soft shadow for depth */
   }
 
   .card-glow {
     position: absolute; top: -80px; right: -80px;
     width: 260px; height: 260px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
     pointer-events: none;
   }
   .card-glow-2 {
     position: absolute; bottom: -60px; left: -60px;
     width: 200px; height: 200px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(20,184,166,0.18) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -51,33 +52,34 @@
     background: linear-gradient(135deg, #6366f1 0%, #14b8a6 100%);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 600; color: #fff;
+    font-size: 20px; font-weight: 600; color: #ffffff;
     margin-bottom: 1.25rem; letter-spacing: -0.01em;
   }
 
   .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
   .badge {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
     text-transform: uppercase; padding: 4px 12px;
-    border-radius: 100px; border: 0.5px solid;
+    border-radius: 100px; border: 1px solid;
   }
-  .badge-indigo { background: rgba(99,102,241,0.12); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
-  .badge-teal   { background: rgba(20,184,166,0.1);  color: #5eead4; border-color: rgba(20,184,166,0.3); }
-  .badge-rose   { background: rgba(244,63,94,0.1);   color: #fda4af; border-color: rgba(244,63,94,0.25); }
+  /* Darkened text/borders for light mode contrast */
+  .badge-indigo { background: rgba(99,102,241,0.1); color: #4f46e5; border-color: rgba(99,102,241,0.2); }
+  .badge-teal   { background: rgba(20,184,166,0.1);  color: #0d9488; border-color: rgba(20,184,166,0.2); }
+  .badge-rose   { background: rgba(244,63,94,0.1);   color: #e11d48; border-color: rgba(244,63,94,0.2); }
 
   .name {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.1rem; font-weight: 600; color: #f8fafc;
+    font-size: 2.1rem; font-weight: 600; color: #0f172a; /* Dark slate */
     margin: 0 0 0.2rem; line-height: 1.15; letter-spacing: -0.02em;
   }
   .title-line {
-    font-size: 13px; color: rgba(255,255,255,0.38);
+    font-size: 13px; color: #64748b; /* Medium slate */
     font-weight: 400; letter-spacing: 0.04em;
   }
 
   .divider {
-    height: 0.5px;
-    background: linear-gradient(90deg, rgba(99,102,241,0.4) 0%, rgba(20,184,166,0.25) 60%, transparent 100%);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(99,102,241,0.2) 0%, rgba(20,184,166,0.15) 60%, transparent 100%);
     margin: 0 2rem;
   }
 
@@ -85,7 +87,7 @@
 
   .contact-item {
     display: flex; align-items: center; gap: 14px;
-    padding: 0.6rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
     text-decoration: none; transition: opacity 0.15s;
   }
   .contact-item:last-child { border-bottom: none; }
@@ -95,19 +97,19 @@
     width: 34px; height: 34px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
-  .icon-indigo { background: rgba(99,102,241,0.15); color: #a5b4fc; }
-  .icon-teal   { background: rgba(20,184,166,0.12); color: #5eead4; }
-  .icon-rose   { background: rgba(244,63,94,0.12);  color: #fda4af; }
+  .icon-indigo { background: rgba(99,102,241,0.1); color: #4f46e5; }
+  .icon-teal   { background: rgba(20,184,166,0.1); color: #0d9488; }
+  .icon-rose   { background: rgba(244,63,94,0.1);  color: #e11d48; }
 
   .contact-label {
-    font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.3);
+    font-size: 11px; font-weight: 600; color: #94a3b8;
     letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px;
   }
-  .contact-value { font-size: 13.5px; color: rgba(255,255,255,0.82); font-weight: 400; }
-  .arrow-wrap { margin-left: auto; color: rgba(255,255,255,0.2); }
+  .contact-value { font-size: 13.5px; color: #334155; font-weight: 500; }
+  .arrow-wrap { margin-left: auto; color: rgba(0,0,0,0.2); }
 
   .section-label {
-    font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.25);
+    font-size: 11px; font-weight: 600; color: #94a3b8;
     letter-spacing: 0.08em; text-transform: uppercase;
     margin: 1.2rem 0 0.75rem; padding: 0 2rem;
   }
@@ -116,35 +118,36 @@
   .social-btn {
     flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
     padding: 12px 8px; border-radius: 14px;
-    border: 0.5px solid rgba(255,255,255,0.07);
-    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(0,0,0,0.06);
+    background: #f8fafc;
     text-decoration: none; transition: background 0.15s, border-color 0.15s;
   }
-  .social-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
-  .social-btn span { font-size: 11px; font-weight: 500; letter-spacing: 0.03em; }
-  .social-ig span { color: #f9a8d4; }
-  .social-li span { color: #93c5fd; }
+  .social-btn:hover { background: #f1f5f9; border-color: rgba(0,0,0,0.12); }
+  .social-btn span { font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
+  .social-ig span { color: #db2777; }
+  .social-li span { color: #2563eb; }
 
   .action-row { display: flex; gap: 10px; padding: 0 2rem 2rem; }
   .action-btn {
     flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 11px 0; border-radius: 12px; border: 0.5px solid;
-    font-size: 13px; font-weight: 500; cursor: pointer;
+    padding: 11px 0; border-radius: 12px; border: 1px solid;
+    font-size: 13px; font-weight: 600; cursor: pointer;
     text-decoration: none; transition: opacity 0.15s; font-family: 'DM Sans', sans-serif;
     background: none;
   }
   .action-btn:hover { opacity: 0.8; }
-  .btn-download  { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.3); color: #a5b4fc; }
-  .btn-whatsapp  { background: rgba(37,211,102,0.10); border-color: rgba(37,211,102,0.3); color: #6ee7b7; }
-  .btn-share     { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); }
+  .btn-download  { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.2); color: #4f46e5; }
+  .btn-whatsapp  { background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.2); color: #16a34a; }
+  .btn-share     { background: #f8fafc; border-color: rgba(0,0,0,0.1); color: #475569; }
 
   .toast {
     position: fixed; bottom: 24px; left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: #1e1e2e; border: 0.5px solid rgba(99,102,241,0.4);
-    color: #a5b4fc; padding: 10px 20px; border-radius: 100px;
-    font-size: 13px; opacity: 0; transition: opacity 0.25s, transform 0.25s;
+    background: #ffffff; border: 1px solid rgba(99,102,241,0.3);
+    color: #4f46e5; padding: 10px 20px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; opacity: 0; transition: opacity 0.25s, transform 0.25s;
     pointer-events: none; z-index: 999; white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
@@ -202,16 +205,16 @@
   <p class="section-label">Social</p>
   <div class="social-row">
     <a class="social-btn social-ig" href="https://www.instagram.com/iam.krish007?igsh=MTd0MnltMTZ2MDUydQ%3D%3D&utm_source=qr" target="_blank">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f9a8d4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5"/>
         <circle cx="12" cy="12" r="4.5"/>
-        <circle cx="17.5" cy="6.5" r="1" fill="#f9a8d4" stroke="none"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="#db2777" stroke="none"/>
       </svg>
       <span>Instagram</span>
     </a>
 
     <a class="social-btn social-li" href="https://www.linkedin.com/in/krish-pachchigar-269015258/" target="_blank">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="4"/>
         <line x1="7" y1="10" x2="7" y2="17"/>
         <line x1="7" y1="7" x2="7.01" y2="7" stroke-width="2.5"/>
@@ -281,14 +284,14 @@ function shareCard() {
   const data = {
     title: 'Krish Pachchigar — Full Stack Developer',
     text: 'Check out Krish Pachchigar\'s digital visiting card!',
-    url: 'https://github.com/Krish-ai007/Digital_Visiting'
+    url: 'https://krishpachchigar.online'
   };
   if (navigator.share) {
     navigator.share(data).catch(() => {});
   } else {
-    navigator.clipboard.writeText('https://github.com/Krish-ai007/Digital_Visiting')
+    navigator.clipboard.writeText('https://krishpachchigar.online')
       .then(() => showToast('Link copied to clipboard!'))
-      .catch(() => showToast('Visit krishpachchigar Visiting Card'));
+      .catch(() => showToast('Visit krishpachchigar.online'));
   }
 }
 </script>
